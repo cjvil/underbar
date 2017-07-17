@@ -99,8 +99,18 @@
 
   // Produce a duplicate-free version of the array.
   _.uniq = function(array) {
-  };
+    var unique = [];
+    var hash = {};
 
+    _.each(array, function(element) {
+        if(hash.hasOwnProperty(element) === false) {
+          unique.push(element);
+          hash[element] = true;
+        }
+    });
+
+    return unique;
+  };
 
   // Return the results of applying an iterator to each element.
   _.map = function(collection, iterator) {
