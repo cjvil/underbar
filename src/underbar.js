@@ -38,7 +38,7 @@
   // Like first, but for the last elements. If n is undefined, return just the
   // last element.
   _.last = function(array, n) {
-    if(n > array.length) {
+    if (n > array.length) {
       return array;
     }
     return n === undefined ? array[array.length - 1] : array.slice(array.length - n);
@@ -50,11 +50,11 @@
   // Note: _.each does not have a return value, but rather simply runs the
   // iterator function over each item in the input collection.
   _.each = function(collection, iterator) {
-    if(Array.isArray(collection)) {
+    if (Array.isArray(collection)) {
       for(var i = 0; i < collection.length; i++) {
         iterator(collection[i], i, collection);
       }
-    } else if(typeof collection === 'object') {
+    } else if (typeof collection === 'object') {
       for(var key in collection) {
         iterator(collection[key], key, collection);
       }
@@ -110,11 +110,6 @@
     });
 
     return output;
-
-    //hash!
-    //for each element in collection,loop through filtered list
-    //if element appears in filtered list, mark remove as true
-    //if marked remove, do nothing else pushed to rejected
   };
 
   // Produce a duplicate-free version of the array.
@@ -123,7 +118,7 @@
     var hash = {};
 
     _.each(array, function(element) {
-        if(hash.hasOwnProperty(element) === false) {
+        if (hash.hasOwnProperty(element) === false) {
           unique.push(element);
           hash[element] = true;
         }
@@ -138,11 +133,11 @@
     // like each(), but in addition to running the operation on all
     // the members, it also maintains an array of results.
     var results = [];
-    if(Array.isArray(collection)) {
+    if (Array.isArray(collection)) {
     for(var i = 0; i < collection.length; i++) {
       results.push(iterator(collection[i], i, collection));
     }
-    } else if(typeof collection === 'object') {
+    } else if (typeof collection === 'object') {
       for(var key in collection) {
         results.push(iterator(collection[key], key, collection));
       }
