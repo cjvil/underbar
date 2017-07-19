@@ -97,9 +97,8 @@
     // copying code in and modifying it
     var output = [];
     var filteredHash = {};
-    var filtered = _.filter(collection, test);
 
-    _.each(filtered, function(element) {
+    _.each(_.filter(collection, test), function(element) {
       filteredHash[element] = true;
     });
 
