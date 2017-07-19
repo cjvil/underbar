@@ -95,6 +95,26 @@
   _.reject = function(collection, test) {
     // TIP: see if you can re-use _.filter() here, without simply
     // copying code in and modifying it
+    var output = [];
+    var filteredHash = {};
+    var filtered = _.filter(collection, test);
+
+    _.each(filtered, function(element) {
+      filteredHash[element] = true;
+    });
+
+    _.each(collection, function(element) {
+      if (filteredHash.hasOwnProperty(element) !== true) {
+        output.push(element);
+      }
+    });
+
+    return output;
+
+    //hash!
+    //for each element in collection,loop through filtered list
+    //if element appears in filtered list, mark remove as true
+    //if marked remove, do nothing else pushed to rejected
   };
 
   // Produce a duplicate-free version of the array.
@@ -170,6 +190,7 @@
   //   }); // should be 5, regardless of the iterator function passed in
   //          No accumulator is given so the first element is used.
   _.reduce = function(collection, iterator, accumulator) {
+    
   };
 
   // Determine if the array or object contains a given value (using `===`).
