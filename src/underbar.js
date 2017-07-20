@@ -191,7 +191,7 @@
       start = 1;
     }
     
-    _.each(collection.slice(start), function(item) {
+    _.each(Array.isArray(collection) ? collection.slice(start) : collection, function(item) {
       accumulator = iterator(accumulator, item);
     });
 
