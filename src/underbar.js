@@ -259,6 +259,14 @@
   // Like extend, but doesn't ever overwrite a key that already
   // exists in obj
   _.defaults = function(obj) {
+    _.each(Array.from(arguments).slice(1), function(element) {
+      for(var key in element) {
+        if (!obj.hasOwnProperty(key)) {
+          obj[key] = element[key];
+        }
+      }
+    })
+    return obj;
   };
 
 
