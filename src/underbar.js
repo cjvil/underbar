@@ -226,6 +226,20 @@
   // provided, provide a default one
   _.some = function(collection, iterator) {
     // TIP: There's a very clever way to re-use every() here.
+    if (iterator === undefined) {
+      iterator = _.identity;
+    }
+
+    var pass = false;
+
+    _.each(collection, function(element) {
+      if (!pass) {
+        element = [element];
+        pass = _.every(element, iterator); 
+      }
+    });
+
+    return pass;
   };
 
 
