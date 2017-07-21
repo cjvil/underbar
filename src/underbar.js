@@ -310,6 +310,24 @@
   // already computed the result for the given argument and return that value
   // instead if possible.
   _.memoize = function(func) {
+    var computed = {};
+
+    return function() {
+      for(var key in computed) {
+        if (computed[key].argString === Array.from(arguments).toString() && computed[key].length === arguments.length) {
+          return key;
+        } 
+      }
+
+      var result = func.apply(this, arguments);
+      
+      computed[result] = {
+        'argString' : Array.from(arguments).toString(),
+        'length' : arguments.length
+      };
+
+      return result;
+    }
   };
 
   // Delays a function for the given number of milliseconds, and then calls
