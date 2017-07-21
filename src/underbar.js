@@ -320,7 +320,7 @@
       }
 
       var result = func.apply(this, arguments);
-      
+
       computed[result] = {
         'argString' : Array.from(arguments).toString(),
         'length' : arguments.length
@@ -337,6 +337,10 @@
   // parameter. For example _.delay(someFunction, 500, 'a', 'b') will
   // call someFunction('a', 'b') after 500ms
   _.delay = function(func, wait) {
+    var args = Array.from(arguments).slice(2);
+    setTimeout(function() {
+      func.apply(this, args);
+    }, wait);
   };
 
 
