@@ -132,15 +132,10 @@
     // like each(), but in addition to running the operation on all
     // the members, it also maintains an array of results.
     var results = [];
-    if (Array.isArray(collection)) {
-    for(var i = 0; i < collection.length; i++) {
-      results.push(iterator(collection[i], i, collection));
-    }
-    } else if (typeof collection === 'object') {
-      for(var key in collection) {
-        results.push(iterator(collection[key], key, collection));
-      }
-    }
+
+    _.each(collection, function(element) {
+      results.push(iterator(element));
+    });
 
     return results;
   };
