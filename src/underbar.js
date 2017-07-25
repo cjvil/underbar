@@ -103,7 +103,7 @@
     });
 
     _.each(collection, function(element) {
-      if (filteredHash.hasOwnProperty(element) !== true) {
+      if (!filteredHash.hasOwnProperty(element)) {
         output.push(element);
       }
     });
@@ -117,7 +117,7 @@
     var hash = {};
 
     _.each(array, function(element) {
-        if (hash.hasOwnProperty(element) === false) {
+        if (!hash.hasOwnProperty(element)) {
           unique.push(element);
           hash[element] = true;
         }
