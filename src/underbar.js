@@ -329,7 +329,6 @@
       }
 
       var result = func.apply(this, arguments);
-
       computed[result] = Array.from(arguments);
 
       return result;
@@ -401,6 +400,21 @@
   // Example:
   // _.zip(['a','b','c','d'], [1,2,3]) returns [['a',1], ['b',2], ['c',3], ['d',undefined]]
   _.zip = function() {
+    var zipped = [];
+
+    _.each(Array.from(arguments), function(arg) {
+      _.each(arg, function(element, index) {
+        zipped[index] === undefined ? zipped[index] = [element] : zipped[index].push(element);
+      });
+    });
+
+    _.each(zipped, function(element) {
+      while (element.length < arguments.length) {
+        element.push(undefined);
+      }
+    });
+
+    return zipped;
   };
 
   // Takes a multidimensional array and converts it to a one-dimensional array.
