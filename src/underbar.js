@@ -323,17 +323,14 @@
 
     return function() {
       for(var key in computed) {
-        if (computed[key].argString === Array.from(arguments).toString() && computed[key].length === arguments.length) {
+        if (computed[key].toString() === Array.from(arguments).toString() && computed[key].length === arguments.length) {
           return key;
         } 
       }
 
       var result = func.apply(this, arguments);
 
-      computed[result] = {
-        'argString' : Array.from(arguments).toString(),
-        'length' : arguments.length
-      };
+      computed[result] = Array.from(arguments);
 
       return result;
     }
